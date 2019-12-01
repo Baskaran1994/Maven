@@ -1,0 +1,31 @@
+NewDeclarativePipelinepipeline{
+    agent any
+    stages{
+        stage('Continuous Download'){
+            steps{
+            git 'https://github.com/Baskaran1994/Maven.git'
+            }
+        }
+        stage('Continuous Build'){
+            steps{
+                sh label: '' , script: 'mvn package'
+            }
+        }
+        stage('Continuous Deployment'){
+            steps{
+                sh label: '' , script: 'scp /home/ec2-user/.jenkins/workspace/Declarative-pipeline/webapp/target/webapp.war  ec2-user@172.31.42.22:/var/lib/tomcat/webapps/testwebapp.war'
+            }
+        }
+        stage('Continuous Testing'){
+            steps{
+                sh label: '' , script: 'echo "Test Passes"'
+            }
+        }
+        stage('Continuous Delivery'){
+            steps{
+                sh label: '' , script: 'scp /home/ec2-user/.jenkins/workspace/Declarative-pipeline/webapp/target/webapp.war  ec2-user@172.31.7.27:/var/lib/tomcat/webapps/testwebapp.war'
+            }
+        }
+        
+    }
+}
