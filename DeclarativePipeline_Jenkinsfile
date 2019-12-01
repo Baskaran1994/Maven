@@ -29,7 +29,7 @@ pipeline{
                 sh label: '' , script: 'scp /home/ec2-user/.jenkins/workspace/Declarative-pipeline/webapp/target/webapp.war  ec2-user@172.31.7.27:/var/lib/tomcat/webapps/prodwebapp.war'
             }
 	failure{
-				mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'gogulkrish.k@gmail.com'
+		mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'gogulkrish.k@gmail.com'
         }
 	
 }
